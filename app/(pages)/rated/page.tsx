@@ -7,8 +7,9 @@ import { useGetGenres } from '@/hooks/use-genres'
 import { CLIENT_GENRE_URL } from '@/constants/api-constants'
 import { useEffect, useState } from 'react'
 import { Pagination } from '@/components/pagination/pagination'
-import { Box, TextInput } from '@mantine/core'
+import { Box, Button, TextInput, Title } from '@mantine/core'
 import { MoviesList } from '@/components/movies'
+import { IconSearch } from '@/ui'
 
 const Page = () => {
   const [favoritesLC, setFavoritesLC] = useLocalStorage<{ id: number; rating: number }[]>({
@@ -25,7 +26,6 @@ const Page = () => {
     label: genre.name,
   }))
 
-  
   const getGenres = (movie: MovieDetails): string => {
     return movie?.genres
       .map((genreId) => genreOptions?.find((option) => option.value === genreId.id.toString())?.label)
@@ -49,13 +49,30 @@ const Page = () => {
     }
   }, [paginatedMovies])
 
-
-
-
   return (
     <Box mx={90} pt={41.5}>
+      <Title order={1} fz={32} fw={700} lh="140%" fs='normal' > 
+        Rated movies
+      </Title>
       <TextInput
-        placeholder="Search by title"
+        radius={8}
+        styles={{
+          root: {},
+          input: {
+            height: 48,
+            border: '1px solid var(--mantine-color-grey-3)',
+          },
+        }}
+        maw={658}
+        w="100%"
+        leftSection={<IconSearch />}
+        rightSectionWidth={100}
+        rightSection={
+          <Button color="purple.5" w={88} h={32} radius={8}>
+            Search
+          </Button>
+        }
+        placeholder="Search movie title"
         value={searchTerm}
         onChange={(event) => {
           if (activePage !== 1) {
