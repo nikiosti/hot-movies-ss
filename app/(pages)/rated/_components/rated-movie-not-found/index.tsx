@@ -7,7 +7,7 @@ export const RatedMovieNotFound = () => {
   const router = useRouter()
   return (
     <>
-      <Center h="100%">
+      <Center h="100vh">
         <Box>
           <Center>
             <Image src="/empty-rated.png" w={311} alt="notfound image" />

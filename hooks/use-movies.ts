@@ -39,6 +39,7 @@ const useParallelMovie = (movies: { id: number; rating: number }[]) => {
     combine: (results) => ({
       data: results.map((r) => r.data),
       isPending: results.some((r) => r.isPending),
+      isSuccess: results.some((r) => r.isSuccess),
     }),
   })
   return queries

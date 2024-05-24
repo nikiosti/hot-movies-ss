@@ -19,7 +19,7 @@ const Page = () => {
     defaultValue: [],
   })
 
-  const { data: movies, isPending } = useParallelMovie(favoritesLC)
+  const { data: movies, isPending, isSuccess } = useParallelMovie(favoritesLC)
 
   const { data: genres } = useGetGenres('genres', CLIENT_GENRE_URL)
 
@@ -45,6 +45,7 @@ const Page = () => {
 
   const paginatedMovies = filteredMovies.slice((activePage - 1) * itemsPerPage, activePage * itemsPerPage)
 
+  const [searchValue, setSearchValue] = useState<string>('')
   useEffect(() => {
     if (paginatedMovies.length === 0) {
       setPage(1)
@@ -53,10 +54,14 @@ const Page = () => {
 
   if (isPending) {
     return (
-      <Center h="100%">
+      <Center h="100vh">
         <Loader />
       </Center>
     )
+  }
+
+  if (favoritesLC.length === 0 && isSuccess) {
+    return <RatedMovieNotFound />
   }
   return (
     <Box mx={90} pt={41.5}>
@@ -78,7 +83,7 @@ const Page = () => {
           leftSection={<IconSearch />}
           rightSectionWidth={100}
           rightSection={
-            <Button color="purple.5" w={88} h={32} radius={8}>
+            <Button color="purple.5" w={88} h={32} radius={8} onClick={() => setSearchTerm(searchValue)}>
               Search
             </Button>
           }
@@ -88,13 +93,13 @@ const Page = () => {
             if (activePage !== 1) {
               setPage(1)
             }
-            setSearchTerm(event.target.value)
+            setSearchValue(event.target.value)
           }}
         />
       </Group>
 
-      {movies.length === 0 && <RatedMovieNotFound />}
       {filteredMovies.length === 0 && movies.length !== 0 && <MovieNotFound />}
+
       <Box mt={40}>
         <MoviesList moviesData={paginatedMovies as MovieDetails[]} getGenres={getGenres} />
       </Box>
