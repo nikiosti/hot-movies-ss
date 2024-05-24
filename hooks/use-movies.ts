@@ -36,6 +36,10 @@ const useParallelMovie = (movies: { id: number; rating: number }[]) => {
         queryFn: () => getData(CLIENT_MOVIE_DETAIL_URL + '/' + movie.id),
       }
     }),
+    combine: (results) => ({
+      data: results.map((r) => r.data),
+      isPending: results.some((r) => r.isPending),
+    }),
   })
   return queries
 }

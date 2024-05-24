@@ -7,9 +7,11 @@ import { useGetGenres } from '@/hooks/use-genres'
 import { CLIENT_GENRE_URL } from '@/constants/api-constants'
 import { useEffect, useState } from 'react'
 import { Pagination } from '@/components/pagination/pagination'
-import { Box, Button, Center, Group, TextInput, Title } from '@mantine/core'
+import { Box, Button, Center, Group, Loader, TextInput, Title } from '@mantine/core'
 import { MoviesList } from '@/components/movies'
 import { IconSearch } from '@/ui'
+import { RatedMovieNotFound } from './_components/rated-movie-not-found'
+import { MovieNotFound } from '@/components/movies/movie-not-found'
 
 const Page = () => {
   const [favoritesLC, setFavoritesLC] = useLocalStorage<{ id: number; rating: number }[]>({
@@ -17,7 +19,7 @@ const Page = () => {
     defaultValue: [],
   })
 
-  const movies = useParallelMovie(favoritesLC).map((query) => query.data)
+  const { data: movies, isPending } = useParallelMovie(favoritesLC)
 
   const { data: genres } = useGetGenres('genres', CLIENT_GENRE_URL)
 
@@ -49,6 +51,13 @@ const Page = () => {
     }
   }, [paginatedMovies])
 
+  if (isPending) {
+    return (
+      <Center h="100%">
+        <Loader />
+      </Center>
+    )
+  }
   return (
     <Box mx={90} pt={41.5}>
       <Group justify="space-between">
@@ -83,6 +92,9 @@ const Page = () => {
           }}
         />
       </Group>
+
+      {movies.length === 0 && <RatedMovieNotFound />}
+      {filteredMovies.length === 0 && movies.length !== 0 && <MovieNotFound />}
       <Box mt={40}>
         <MoviesList moviesData={paginatedMovies as MovieDetails[]} getGenres={getGenres} />
       </Box>

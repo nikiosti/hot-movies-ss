@@ -1,18 +1,25 @@
 'use client'
 
-import { Box, Center, Image, Title } from '@mantine/core'
+import { Box, Button, Center, Image, Title } from '@mantine/core'
+import { useRouter } from 'next/router'
 
 export const RatedMovieNotFound = () => {
+  const router = useRouter()
   return (
     <>
-      <Center>
+      <Center h="100%">
         <Box w={468}>
           <Center>
-            <Image src="/notfound.png" w={233} alt="notfound image" />
+            <Image src="/empty-rated.png" w={233} alt="notfound image" />
           </Center>
-          <Title ta="center" lh="normal" fw={600} fz={20} fs="normal" order={3}>
+          <Title ta="center" lh="normal" fw={600} fz={20} fs="normal" order={3} mt={16}>
             You haven&apos;t rated any films yet
           </Title>
+          <Center>
+            <Button color="purple.5" radius={8} mt={16} onClick={() => router.push('/')}>
+              Find movies
+            </Button>
+          </Center>
         </Box>
       </Center>
     </>
