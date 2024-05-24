@@ -13,6 +13,7 @@ export const Pagination = ({
 }) => {
   return (
     <MantinePagination.Root
+      color="purple.5"
       styles={{
         dots: {
           display: 'none',

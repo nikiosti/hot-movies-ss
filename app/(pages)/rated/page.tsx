@@ -19,11 +19,13 @@ const Page = () => {
   const movies = useParallelMovie(favoritesLC).map((query) => query.data)
 
   const { data: genres } = useGetGenres('genres', CLIENT_GENRE_URL)
+
   const genreOptions = genres?.genres.map((genre) => ({
     value: genre.id.toString(),
     label: genre.name,
   }))
 
+  
   const getGenres = (movie: MovieDetails): string => {
     return movie?.genres
       .map((genreId) => genreOptions?.find((option) => option.value === genreId.id.toString())?.label)
@@ -46,6 +48,9 @@ const Page = () => {
       setPage(1)
     }
   }, [paginatedMovies])
+
+
+
 
   return (
     <Box mx={90} pt={41.5}>

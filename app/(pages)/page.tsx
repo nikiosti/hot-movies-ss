@@ -42,7 +42,7 @@ const Page = () => {
     'vote_average.lte': form.values.voteAverageLte,
   })
 
-  const { data: moviesData, isPending } = useGetMovies('movies', url)
+  const { data: moviesData, isLoading } = useGetMovies('movies', url)
 
   const { data: genres }: UseQueryResult<{ genres: Genre[] }> = useGetGenres('genres', CLIENT_GENRE_URL)
 
@@ -64,13 +64,13 @@ const Page = () => {
         Movies
       </Title>
       <Filters form={form} genreOptions={genreOptions} key="filter" />
-      {isPending ? (
+      {isLoading ? (
         <MoviesSkeleton key="skeleton" count={20} />
       ) : (
         <MoviesList moviesData={moviesData?.results as MovieResult[]} getGenres={getGenres} key="moviesList" />
       )}
 
-      {!moviesData?.results.length && <MovieNotFound />}
+      {moviesData?.results.length === 0 && <MovieNotFound />}
       <Pagination
         key="pagination"
         total={(moviesData?.total_pages as number) >= 500 ? 500 : (moviesData?.total_pages as number)}

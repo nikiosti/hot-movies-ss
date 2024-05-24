@@ -8,7 +8,7 @@ import { useGetGenres } from '@/hooks/use-genres'
 import { useGetMovie } from '@/hooks/use-movies'
 import { buildDate, buildSuffix, formatTime } from '@/utils/formaters'
 
-import { Box, Breadcrumbs, Group, Image, NumberFormatter, Paper, Stack, Text } from '@mantine/core'
+import { Box, Breadcrumbs, Center, Group, Image, Loader, NumberFormatter, Paper, Stack, Text } from '@mantine/core'
 import { useDisclosure, useLocalStorage } from '@mantine/hooks'
 import Link from 'next/link'
 import { useState } from 'react'
@@ -73,7 +73,11 @@ const Page = ({ params }: { params: { id: string } }) => {
   }))
 
   if (isPending) {
-    return <>Loading</>
+    return (
+      <Center h="100vh">
+        <Loader />
+      </Center>
+    )
   }
   return (
     <Box mx={180} pt={40}>

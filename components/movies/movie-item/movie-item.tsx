@@ -2,6 +2,7 @@
 
 import { TMDB_IMAGE_URL } from '@/constants/api-constants'
 import { MovieDetails, MovieResult } from '@/types/Movies'
+import { IconStar } from '@/ui'
 import { buildSuffix } from '@/utils/formaters'
 import { Group, Image, Paper, Text, UnstyledButton } from '@mantine/core'
 import { useRouter } from 'next/navigation'
@@ -33,8 +34,18 @@ export const MovieItem: React.FC<MovieProps> = ({ movie, children, genres }) => 
                 {movie?.original_title}
               </Text>
             </UnstyledButton>
-            <Text>{new Date(movie?.release_date as string).getFullYear()}</Text>
-            <Text> {buildSuffix(movie?.vote_count as number)}</Text>
+            <Text c="grey.6" fz={16} fw={400} lh="20px" mt={8}>
+              {new Date(movie?.release_date as string).getFullYear()}
+            </Text>
+            <Group gap={8}>
+              <Group gap={4}>
+                <IconStar style={{ stroke: 'var(--mantine-color-yellow-4)', fill: 'var(--mantine-color-yellow-4)' }} />
+                <Text fw={600} lh="20px" fz={16} fs="normal">
+                  {movie?.vote_average?.toFixed(1)}
+                </Text>
+              </Group>
+              <Text> {buildSuffix(movie?.vote_count as number)}</Text>
+            </Group>
             <Text lineClamp={1} w="100%">
               {genres}
             </Text>
