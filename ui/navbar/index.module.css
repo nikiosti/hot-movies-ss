@@ -1,0 +1,21 @@
+.root {
+  color: var(--mantine-color-purple-5);
+  font-size: rem(16px);
+  font-style: normal;
+  font-weight: 700;
+  line-height: 140%;
+
+  margin-bottom: rem(16px);
+  border-radius: rem(8px);
+
+  &[data-active] {
+    background-color: var(--mantine-color-purple-2);
+    @mixin hover {
+      background-color: var(--mantine-color-purple-2);
+    }
+  }
+
+  @mixin hover {
+    background-color: var(--mantine-color-purple-1);
+  }
+}

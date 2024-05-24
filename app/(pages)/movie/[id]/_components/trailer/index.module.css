@@ -1,0 +1,6 @@
+.video {
+  width: rem(500px);
+  height: rem(281px);
+  border-radius: rem(9px);
+  margin-top: rem(16px);
+}
