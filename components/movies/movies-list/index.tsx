@@ -37,7 +37,7 @@ export const MoviesList = <T extends Movie>({ moviesData, getGenres }: MoviesPro
         )
       )
     } else {
-      setFavoritesLC([...favoritesLC, currentFavorite])
+      setFavoritesLC(favoritesLC)
       setIsRated(true)
     }
   }

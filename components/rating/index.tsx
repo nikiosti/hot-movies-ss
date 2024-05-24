@@ -24,7 +24,9 @@ export const Rating = ({ favorite, onSetCurrentFavorite, movie }: Rating) => {
           }
         />
       </ActionIcon>
-      <Text>{favorite?.rating}</Text>
+      <Text fw={600} fz={16} lh="16px" fs='normal' >
+        {favorite?.rating}
+      </Text>
     </Group>
   )
 }

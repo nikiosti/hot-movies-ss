@@ -44,7 +44,7 @@ export const ModalRating = ({
         size="100%"
         count={10}
         value={currentFavorite?.rating}
-        onChange={(value) => setCurrentFavorite({ id: currentFavorite.id, rating: value })}
+        onChange={(value) => setCurrentFavorite({ id: currentFavorite.id, rating: value, name: currentFavorite.name })}
       />
       <Group gap={16} mt={16}>
         <Button
