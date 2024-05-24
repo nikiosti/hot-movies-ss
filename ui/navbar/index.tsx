@@ -16,7 +16,7 @@ export const Navbar = () => {
     {
       label: 'Rated movies',
       href: '/rated',
-      isActive: () => usePathname() === '/rated',
+      isActive: () => usePathname() === '/rated' || usePathname().includes('movie'),
     },
   ]
 

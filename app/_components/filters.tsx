@@ -2,9 +2,8 @@
 
 import { SORT_BY_DATA } from '@/constants/filter-constants'
 import { FilterForm } from '@/types/Form'
-import { Box, Group, MultiSelect, NumberInput, Text, UnstyledButton } from '@mantine/core'
+import { Box, Group, NumberInput, Text, UnstyledButton } from '@mantine/core'
 import { UseFormReturnType } from '@mantine/form'
-import { Combobox } from '@mantine/core'
 import { SelectGenres } from '@/components/genre-select'
 
 import classes from './index.module.css'

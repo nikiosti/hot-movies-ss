@@ -53,11 +53,7 @@ const Page = () => {
   }, [paginatedMovies])
 
   if (isPending || favoritesLC.length === 0) {
-    return (
-      <Center h="100vh">
-        {favoritesLC.length === 0 ? <RatedMovieNotFound /> : <Loader />}
-      </Center>
-    )
+    return <Center h="100vh">{favoritesLC.length === 0 ? <RatedMovieNotFound /> : <Loader />}</Center>
   }
   return (
     <Box mx={90} pt={41.5} h="calc(100vh - 48px)">
@@ -79,16 +75,24 @@ const Page = () => {
           leftSection={<IconSearch />}
           rightSectionWidth={100}
           rightSection={
-            <Button color="purple.5" w={88} h={32} radius={8} onClick={() => setSearchTerm(searchValue)}>
+            <Button
+              color="purple.5"
+              w={88}
+              h={32}
+              radius={8}
+              onClick={() => {
+                if (activePage !== 1) {
+                  setPage(1)
+                }
+                setSearchTerm(searchValue)
+              }}
+            >
               Search
             </Button>
           }
           placeholder="Search movie title"
           value={searchValue}
           onChange={(event) => {
-            if (activePage !== 1) {
-              setPage(1)
-            }
             setSearchValue(event.target.value)
           }}
         />
