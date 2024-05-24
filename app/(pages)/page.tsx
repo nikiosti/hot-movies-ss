@@ -1,6 +1,6 @@
 'use client'
 import { CLIENT_GENRE_URL, CLIENT_MOVIES_URL } from '@/constants/api-constants'
-import { Filters } from '../_components/filters'
+import { Filters } from './_components/filters'
 import { MoviesList } from '@/components/movies'
 import { MovieResult } from '@/types/Movies'
 import { UseQueryResult } from '@tanstack/react-query'
@@ -14,10 +14,12 @@ import { useEffect, useState } from 'react'
 import { useGetGenres } from '@/hooks/use-genres'
 import { Genre } from '@/types/Genre'
 
-import { Pagination } from '@/components/pagination/pagination'
+import { Pagination } from '@/components/pagination'
 import { Box, Title } from '@mantine/core'
 import { MoviesSkeleton } from '@/components/movies/movies-skeleton'
 import { MovieNotFound } from '@/components/movies/movie-not-found'
+
+import classes from './page.module.css'
 
 const Page = () => {
   const form = useForm<FilterForm>({
@@ -63,22 +65,21 @@ const Page = () => {
   }, [form.values])
 
   return (
-    <Box mx={90} pt={41.5} pos="relative">
-      <Title key="title" order={3} fz={32} fw={700} fs="normal" lh="140%">
+    <Box className={classes.container}>
+      <Title order={3} className={classes.title}>
         Movies
       </Title>
-      <Filters form={form} genreOptions={genreOptions} key="filter" />
+      <Filters form={form} genreOptions={genreOptions} />
       {isLoading ? (
-        <MoviesSkeleton key="skeleton" count={20} />
+        <MoviesSkeleton count={20} />
       ) : (
-        <MoviesList moviesData={moviesData?.results as MovieResult[]} getGenres={getGenres} key="moviesList" />
+        <MoviesList moviesData={moviesData?.results as MovieResult[]} getGenres={getGenres} />
       )}
 
       {moviesData?.results.length === 0 && <MovieNotFound />}
       <Box h={24} />
-      <Box pos="absolute" right={0}>
+      <Box className={classes.paginationContainer}>
         <Pagination
-          key="pagination"
           total={(moviesData?.total_pages as number) >= 500 ? 500 : (moviesData?.total_pages as number)}
           activePage={activePage}
           setActivePage={setActivePage}
