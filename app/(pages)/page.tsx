@@ -10,7 +10,7 @@ import { useForm } from '@mantine/form'
 import { SORT_BY_DATA } from '@/constants/filter-constants'
 
 import { FilterForm } from '@/types/Form'
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import { useGetGenres } from '@/hooks/use-genres'
 import { Genre } from '@/types/Genre'
 
@@ -57,6 +57,10 @@ const Page = () => {
       .filter((label) => label !== undefined)
       .join(', ')
   }
+
+  useEffect(() => {
+    setActivePage(1)
+  }, [form.values])
 
   return (
     <Box mx={90} pt={41.5} pos="relative">

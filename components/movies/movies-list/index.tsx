@@ -5,7 +5,7 @@ import { MovieDetails, MovieResult } from '@/types/Movies'
 import { Button, Modal, SimpleGrid, Text, Rating as RatingStars, UnstyledButton } from '@mantine/core'
 import { useDisclosure, useLocalStorage } from '@mantine/hooks'
 import { useState } from 'react'
-import { MovieItem } from '../movie-item/movie-item'
+import { MovieItem } from '../movie-item'
 import { ModalRating } from '@/components/modal'
 
 export type Movie = MovieResult | MovieDetails | undefined
@@ -37,7 +37,7 @@ export const MoviesList = <T extends Movie>({ moviesData, getGenres }: MoviesPro
         )
       )
     } else {
-      setFavoritesLC(favoritesLC)
+      setFavoritesLC([...favoritesLC, currentFavorite])
       setIsRated(true)
     }
   }

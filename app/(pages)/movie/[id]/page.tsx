@@ -38,7 +38,11 @@ const Page = ({ params }: { params: { id: string } }) => {
 
   const [openedModalRating, { open: openModalRating, close: closeModalRating }] = useDisclosure(false)
 
-  const [currentFavorite, setCurrentFavorite] = useState<{ id: number; rating: number }>({ id: NaN, rating: 0 })
+  const [currentFavorite, setCurrentFavorite] = useState<{ id: number; rating: number; name: string }>({
+    id: NaN,
+    name: '',
+    rating: 0,
+  })
   const [isRated, setIsRated] = useState<boolean>(false)
   const handleFavoriteClick = () => {
     if (isRated) {
@@ -52,15 +56,15 @@ const Page = ({ params }: { params: { id: string } }) => {
       setIsRated(true)
     }
   }
-  const onSetCurrentFavorite = (id: number) => {
+  const onSetCurrentFavorite = (id: number, name: string) => {
     const favoriteMovie = favoritesLC.find((fav) => fav.id === id)
 
     if (favoriteMovie) {
       setIsRated(true)
-      setCurrentFavorite(favoriteMovie)
+      setCurrentFavorite({ ...favoriteMovie, name })
     } else {
       setIsRated(false)
-      setCurrentFavorite({ id, rating: 0 })
+      setCurrentFavorite({ id, name, rating: 0 })
     }
     openModalRating()
   }

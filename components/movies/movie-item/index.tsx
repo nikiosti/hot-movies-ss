@@ -25,6 +25,7 @@ export const MovieItem: React.FC<MovieProps> = ({ movie, children, genres }) => 
             <div>
               <UnstyledButton>
                 <Text
+                  lineClamp={2}
                   c="purple.4"
                   fw={600}
                   fz={20}
@@ -47,7 +48,9 @@ export const MovieItem: React.FC<MovieProps> = ({ movie, children, genres }) => 
                     {movie?.vote_average?.toFixed(1)}
                   </Text>
                 </Group>
-                <Text fw={400} fz={16} lh='normal' c='grey.6'  >({buildSuffix(movie?.vote_count as number)})</Text>
+                <Text fw={400} fz={16} lh="normal" c="grey.6">
+                  ({buildSuffix(movie?.vote_count as number)})
+                </Text>
               </Group>
             </div>
             <div>
