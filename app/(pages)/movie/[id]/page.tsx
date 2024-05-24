@@ -18,7 +18,11 @@ import { Trailer } from './_components/trailer'
 import { useErrorRedirect } from '@/hooks/use-error-redirect'
 
 const Page = ({ params }: { params: { id: string } }) => {
-  const { data: movie, isError, isPending } = useGetMovie(CLIENT_MOVIE_DETAIL_URL + '/' + params.id, params.id)
+  const {
+    data: movie,
+    isError,
+    isPending,
+  } = useGetMovie(CLIENT_MOVIE_DETAIL_URL + '/' + params.id + '?append_to_response=videos', params.id)
 
   useErrorRedirect(isError)
 
