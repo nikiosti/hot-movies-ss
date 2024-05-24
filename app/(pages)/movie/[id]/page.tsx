@@ -184,6 +184,8 @@ const Page = ({ params }: { params: { id: string } }) => {
         currentFavorite={currentFavorite}
         handleFavoriteClick={handleFavoriteClick}
       />
+
+      <Box h={367} />
     </Box>
   )
 }

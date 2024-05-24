@@ -52,19 +52,15 @@ const Page = () => {
     }
   }, [paginatedMovies])
 
-  if (isPending) {
+  if (isPending || favoritesLC.length === 0) {
     return (
       <Center h="100vh">
-        <Loader />
+        {favoritesLC.length === 0 ? <RatedMovieNotFound /> : <Loader />}
       </Center>
     )
   }
-
-  if (favoritesLC.length === 0 && isSuccess) {
-    return <RatedMovieNotFound />
-  }
   return (
-    <Box mx={90} pt={41.5}>
+    <Box mx={90} pt={41.5} h="calc(100vh - 48px)">
       <Group justify="space-between">
         <Title order={1} fz={32} fw={700} lh="140%" fs="normal">
           Rated movies
@@ -88,7 +84,7 @@ const Page = () => {
             </Button>
           }
           placeholder="Search movie title"
-          value={searchTerm}
+          value={searchValue}
           onChange={(event) => {
             if (activePage !== 1) {
               setPage(1)
@@ -97,8 +93,7 @@ const Page = () => {
           }}
         />
       </Group>
-
-      {filteredMovies.length === 0 && movies.length !== 0 && <MovieNotFound />}
+      {filteredMovies.length === 0 && isSuccess && <MovieNotFound />}
 
       <Box mt={40}>
         <MoviesList moviesData={paginatedMovies as MovieDetails[]} getGenres={getGenres} />

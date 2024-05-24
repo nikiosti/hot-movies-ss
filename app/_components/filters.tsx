@@ -17,7 +17,7 @@ interface FiltersProps {
 
 export const Filters = ({ form, genreOptions }: FiltersProps) => {
   return (
-    <Box pos="relative" mb={120}>
+    <Box pos="relative" mb={120} mt={40}>
       <Group gap={16} align="flex-end" wrap="nowrap" grow preventGrowOverflow={false}>
         <SelectGenres form={form} genreOptions={genreOptions} />
 

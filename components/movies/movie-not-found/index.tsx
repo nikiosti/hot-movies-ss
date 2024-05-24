@@ -4,7 +4,7 @@ import { Box, Center, Image, Title } from '@mantine/core'
 
 export const MovieNotFound = () => {
   return (
-    <Center>
+    <Center h="100%">
       <Box w={468}>
         <Center>
           <Image src="/notfound.png" w={233} alt="notfound image" />
