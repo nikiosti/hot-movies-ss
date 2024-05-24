@@ -14,7 +14,7 @@ const Page = () => {
         <div>
           <Image src="/404.png" maw={656} mah={196} w="100%"></Image>
           <Title ta="center" lh="normal" fw={600} fz={20} fs="normal" order={3} mt={48}>
-            We can’t find the page you are looking for
+            We can&apos;t find the page you are looking for
           </Title>
           <Center>
             <Button color="purple.5" mt={16} radius={8} onClick={() => router.push('/')}>
