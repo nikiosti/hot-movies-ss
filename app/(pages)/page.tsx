@@ -59,7 +59,7 @@ const Page = () => {
   }
 
   return (
-    <Box mx={90} pt={41.5}>
+    <Box mx={90} pt={41.5} pos="relative">
       <Title key="title" order={3} fz={32} fw={700} fs="normal" lh="140%">
         Movies
       </Title>
@@ -71,12 +71,17 @@ const Page = () => {
       )}
 
       {moviesData?.results.length === 0 && <MovieNotFound />}
-      <Pagination
-        key="pagination"
-        total={(moviesData?.total_pages as number) >= 500 ? 500 : (moviesData?.total_pages as number)}
-        activePage={activePage}
-        setActivePage={setActivePage}
-      />
+      <Box h={24} />
+      <Box pos="absolute" right={0}>
+        <Pagination
+          key="pagination"
+          total={(moviesData?.total_pages as number) >= 500 ? 500 : (moviesData?.total_pages as number)}
+          activePage={activePage}
+          setActivePage={setActivePage}
+        />
+      </Box>
+
+      <Box h={82} />
     </Box>
   )
 }
