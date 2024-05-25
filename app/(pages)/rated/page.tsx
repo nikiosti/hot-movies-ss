@@ -43,6 +43,13 @@ const Page = () => {
   const [searchValue, setSearchValue] = useState<string>('')
   const md = useMediaQuery('(min-width: 62em)')
 
+  const handleSearchClick = () => {
+    if (activePage !== 1) {
+      setPage(1)
+    }
+    setSearchTerm(searchValue)
+  }
+
   useEffect(() => {
     if (paginatedMovies.length === 0) {
       setPage(1)
@@ -51,13 +58,6 @@ const Page = () => {
 
   if (isPending || favoritesLC.length === 0) {
     return <Center h="100vh">{favoritesLC.length === 0 ? <RatedMovieNotFound /> : <Loader />}</Center>
-  }
-
-  const handleSearchClick = () => {
-    if (activePage !== 1) {
-      setPage(1)
-    }
-    setSearchTerm(searchValue)
   }
 
   return (

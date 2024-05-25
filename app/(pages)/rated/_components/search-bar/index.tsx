@@ -1,29 +1,25 @@
 import { IconSearch } from '@/ui'
 import { TextInput, Button } from '@mantine/core'
 
+import classes from './index.module.css'
+
 interface SearchBarProps {
   searchValue: string
   setSearchValue: (value: string) => void
   onSearch: () => void
 }
 
-const SearchBar: React.FC<SearchBarProps> = ({ searchValue, setSearchValue, onSearch }) => {
+const SearchBar = ({ searchValue, setSearchValue, onSearch }: SearchBarProps) => {
   return (
     <TextInput
-      radius={8}
-      styles={{
-        root: {},
-        input: {
-          height: 48,
-          border: '1px solid var(--mantine-color-grey-3)',
-        },
+      classNames={{
+        root: classes.root,
+        input: classes.input,
       }}
-      maw={658}
-      w="100%"
       leftSection={<IconSearch />}
       rightSectionWidth={100}
       rightSection={
-        <Button color="purple.5" w={88} h={32} radius={8} onClick={onSearch}>
+        <Button className={classes.button} onClick={onSearch}>
           Search
         </Button>
       }

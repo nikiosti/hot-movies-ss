@@ -1,0 +1,18 @@
+.root {
+  max-width: rem(658px);
+  width: 100%;
+}
+
+.input {
+  height: rem(48px);
+  border: 1px solid var(--mantine-color-grey-3);
+  border-radius: rem(8px);
+}
+
+.button {
+  width: 88px;
+  height: 32px;
+
+  border-radius: 8px;
+  background-color: var(--mantine-color-purple-5);
+}
