@@ -56,7 +56,7 @@ export const MoviesList = <T extends Movie>({ moviesData, getGenres }: MoviesPro
   }
   return (
     <>
-      <SimpleGrid cols={2} spacing={16} verticalSpacing={16}>
+      <SimpleGrid cols={{ base: 1, xl: 2 }} spacing={16} verticalSpacing={16}>
         {moviesData?.map((movie) => (
           <MovieItem key={movie?.id} movie={movie} genres={getGenres(movie)}>
             <Rating

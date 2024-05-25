@@ -14,12 +14,13 @@ import { useEffect, useState } from 'react'
 import { useGetGenres } from '@/hooks/use-genres'
 import { Genre } from '@/types/Genre'
 
-import { Pagination } from '@/components/pagination' 
+import { Pagination } from '@/components/pagination'
 import { Box, Title } from '@mantine/core'
 import { MoviesSkeleton } from '@/components/movies/movies-skeleton'
 import { MovieNotFound } from '@/components/movies/movie-not-found'
 
 import classes from './page.module.css'
+import { useMediaQuery } from '@mantine/hooks'
 
 const Page = () => {
   const form = useForm<FilterForm>({
@@ -44,7 +45,7 @@ const Page = () => {
     'vote_average.lte': form.values.voteAverageLte,
   })
 
-  const { data: moviesData, isLoading } = useGetMovies( url)
+  const { data: moviesData, isLoading } = useGetMovies(url)
 
   const { data: genres }: UseQueryResult<{ genres: Genre[] }> = useGetGenres('genres', CLIENT_GENRE_URL)
 
@@ -64,8 +65,10 @@ const Page = () => {
     setActivePage(1)
   }, [form.values])
 
+  const md = useMediaQuery('(min-width: 62em)')
+
   return (
-    <Box mx={90} pt={41.5} pos="relative">
+    <Box mx={md ? 90 : 5} pt={41.5} pos="relative">
       <Title order={3} className={classes.title}>
         Movies
       </Title>
@@ -77,6 +80,7 @@ const Page = () => {
       )}
 
       {moviesData?.results.length === 0 && <MovieNotFound />}
+
       <Box h={24} />
       <Box pos="absolute" right={0}>
         <Pagination
