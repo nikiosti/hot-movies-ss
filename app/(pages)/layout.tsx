@@ -1,11 +1,9 @@
 'use client'
 import { AppShell, Burger } from '@mantine/core'
 import { useDisclosure } from '@mantine/hooks'
-
 import { Navbar } from '@/ui'
 
 const Layouyt = ({ children }: { children: React.ReactNode }) => {
-  //TODO: MOBILE
   const [opened, { toggle }] = useDisclosure()
 
   return (
