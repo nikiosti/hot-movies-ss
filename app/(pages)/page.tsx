@@ -33,7 +33,7 @@ const Page = () => {
     },
   })
 
-  const [debounced] = useDebouncedValue(form.values, 200)
+  const [debounced] = useDebouncedValue(form.values, 600)
 
   const [activePage, setActivePage] = useState<number>(1)
 
