@@ -10,10 +10,10 @@ const getData = async (url: string) => {
   return data
 }
 
-const useGetMovies = (qKey: string, url: string) => {
+const useGetMovies = (url: string) => {
   const query = useQuery<MovieData>({
     queryFn: () => getData(url),
-    queryKey: [qKey, url],
+    queryKey: ['movies', url],
   })
 
   return query

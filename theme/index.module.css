@@ -1,0 +1,10 @@
+.button {
+  background-color: var(--mantine-color-purple-5);
+  @mixin hover {
+    background-color: var(--mantine-color-purple-4);
+  }
+
+  &:active {
+    background-color: var(--mantine-color-purple-6);
+  }
+}

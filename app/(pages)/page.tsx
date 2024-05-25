@@ -14,7 +14,7 @@ import { useEffect, useState } from 'react'
 import { useGetGenres } from '@/hooks/use-genres'
 import { Genre } from '@/types/Genre'
 
-import { Pagination } from '@/components/pagination'
+import { Pagination } from '@/components/pagination' 
 import { Box, Title } from '@mantine/core'
 import { MoviesSkeleton } from '@/components/movies/movies-skeleton'
 import { MovieNotFound } from '@/components/movies/movie-not-found'
@@ -44,7 +44,7 @@ const Page = () => {
     'vote_average.lte': form.values.voteAverageLte,
   })
 
-  const { data: moviesData, isLoading } = useGetMovies('movies', url)
+  const { data: moviesData, isLoading } = useGetMovies( url)
 
   const { data: genres }: UseQueryResult<{ genres: Genre[] }> = useGetGenres('genres', CLIENT_GENRE_URL)
 
@@ -65,21 +65,22 @@ const Page = () => {
   }, [form.values])
 
   return (
-    <Box className={classes.container}>
+    <Box mx={90} pt={41.5} pos="relative">
       <Title order={3} className={classes.title}>
         Movies
       </Title>
-      <Filters form={form} genreOptions={genreOptions} />
+      <Filters form={form} genreOptions={genreOptions} key="filter" />
       {isLoading ? (
-        <MoviesSkeleton count={20} />
+        <MoviesSkeleton key="skeleton" count={20} />
       ) : (
-        <MoviesList moviesData={moviesData?.results as MovieResult[]} getGenres={getGenres} />
+        <MoviesList moviesData={moviesData?.results as MovieResult[]} getGenres={getGenres} key="moviesList" />
       )}
 
       {moviesData?.results.length === 0 && <MovieNotFound />}
       <Box h={24} />
-      <Box className={classes.paginationContainer}>
+      <Box pos="absolute" right={0}>
         <Pagination
+          key="pagination"
           total={(moviesData?.total_pages as number) >= 500 ? 500 : (moviesData?.total_pages as number)}
           activePage={activePage}
           setActivePage={setActivePage}

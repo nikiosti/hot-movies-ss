@@ -1,7 +1,7 @@
 .label {
   width: rem(140px);
   font-size: rem(16px);
-  color: var(--mantine-color-gray-6);
+  color: var(--mantine-color-grey-6);
   font-style: normal;
   font-weight: 400;
   line-height: normal;

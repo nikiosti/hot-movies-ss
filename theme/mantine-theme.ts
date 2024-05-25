@@ -1,9 +1,20 @@
-import { createTheme } from '@mantine/core'
-
+'use client'
+import { Button, createTheme } from '@mantine/core'
+import classes from './index.module.css'
 export const theme = createTheme({
   primaryColor: 'purple',
   white: '#FFFFFF',
   black: '#232134',
+
+  components: {
+    Button: Button.extend({
+      defaultProps: {
+        classNames: {
+          root: classes.button,
+        },
+      },
+    }),
+  },
   colors: {
     purple: [
       '#F2ECFA',
