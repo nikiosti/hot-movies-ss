@@ -10,9 +10,9 @@
 }
 
 .button {
-  width: 88px;
-  height: 32px;
+  width: rem(88px);
+  height: rem(32px);
 
-  border-radius: 8px;
+  border-radius: rem(8px);
   background-color: var(--mantine-color-purple-5);
 }
