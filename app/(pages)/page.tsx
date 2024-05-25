@@ -66,7 +66,6 @@ const Page = () => {
   }, [form.values])
 
   const md = useMediaQuery('(min-width: 62em)')
-
   return (
     <Box mx={md ? 90 : 5} pt={41.5} pos="relative">
       <Title order={3} className={classes.title}>

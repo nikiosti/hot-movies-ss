@@ -2,7 +2,7 @@
 
 import { useParallelMovie } from '@/hooks/use-movies'
 import { MovieDetails } from '@/types/Movies'
-import { useLocalStorage } from '@mantine/hooks'
+import { useLocalStorage, useMediaQuery } from '@mantine/hooks'
 import { useGetGenres } from '@/hooks/use-genres'
 import { CLIENT_GENRE_URL } from '@/constants/api-constants'
 import { useEffect, useState } from 'react'
@@ -46,6 +46,8 @@ const Page = () => {
   const paginatedMovies = filteredMovies.slice((activePage - 1) * itemsPerPage, activePage * itemsPerPage)
 
   const [searchValue, setSearchValue] = useState<string>('')
+  const md = useMediaQuery('(min-width: 62em)')
+
   useEffect(() => {
     if (paginatedMovies.length === 0) {
       setPage(1)
@@ -55,8 +57,9 @@ const Page = () => {
   if (isPending || favoritesLC.length === 0) {
     return <Center h="100vh">{favoritesLC.length === 0 ? <RatedMovieNotFound /> : <Loader />}</Center>
   }
+
   return (
-    <Box mx={90} pt={41.5} h="calc(100vh - 48px)">
+    <Box mx={md ? 90 : 5} pt={41.5} h="calc(100vh - 48px)">
       <Group justify="space-between">
         <Title order={1} fz={32} fw={700} lh="140%" fs="normal">
           Rated movies
