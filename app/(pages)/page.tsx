@@ -23,6 +23,8 @@ import classes from './page.module.css'
 import { useDebouncedValue, useMediaQuery } from '@mantine/hooks'
 
 const Page = () => {
+  const [activePage, setActivePage] = useState<number>(1)
+
   const form = useForm<FilterForm>({
     initialValues: {
       genres: [],
@@ -32,11 +34,7 @@ const Page = () => {
       voteAverageGte: '',
     },
   })
-
   const [debounced] = useDebouncedValue(form.values, 600)
-
-  const [activePage, setActivePage] = useState<number>(1)
-
   const url = buildUrlWithParameters(CLIENT_MOVIES_URL, {
     language: 'en-US',
     page: activePage,
@@ -48,17 +46,11 @@ const Page = () => {
   })
 
   const { data: moviesData, isLoading } = useGetMovies(url)
-
-  const { data: genres }: UseQueryResult<{ genres: Genre[] }> = useGetGenres('genres', CLIENT_GENRE_URL)
-
-  const genreOptions = genres?.genres.map((genre) => ({
-    value: genre.id.toString(),
-    label: genre.name,
-  }))
+  const { data: genres } = useGetGenres('genres')
 
   const getGenres = (movie: MovieResult) => {
     return movie?.genre_ids
-      ?.map((genreId) => genreOptions?.find((option) => option.value === genreId.toString())?.label)
+      ?.map((genreId) => genres?.find((option) => option.value === genreId.toString())?.label)
       .filter((label) => label !== undefined)
       .join(', ')
   }
@@ -73,7 +65,7 @@ const Page = () => {
       <Title order={3} className={classes.title}>
         Movies
       </Title>
-      <Filters form={form} genreOptions={genreOptions} key="filter" />
+      <Filters form={form} genreOptions={genres} key="filter" />
       {isLoading ? (
         <MoviesSkeleton key="skeleton" count={20} />
       ) : (

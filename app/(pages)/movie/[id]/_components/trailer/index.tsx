@@ -34,6 +34,7 @@ export const Trailer = ({ movie }: { movie: MovieDetails | undefined }) => {
       <Title fz={20} fs="normal" fw={700} lh="20px">
         Description
       </Title>
+      <Text className={classes.descriptionText}>{movie?.overview}</Text>
       <Divider my={20} />
       <Title fz={20} fs="normal" fw={700} lh="20px">
         Production

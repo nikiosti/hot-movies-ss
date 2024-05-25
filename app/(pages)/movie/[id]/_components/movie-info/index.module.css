@@ -1,0 +1,18 @@
+.label {
+  width: rem(140px);
+  font-size: rem(16px);
+  color: var(--mantine-color-grey-6);
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+}
+
+.value {
+  color: var(--mantine-color-black);
+  font-feature-settings: 'clig' off, 'liga' off;
+  font-family: Inter;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 20px;
+}

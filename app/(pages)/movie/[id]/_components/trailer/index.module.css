@@ -4,3 +4,13 @@
   border-radius: rem(9px);
   margin-top: rem(16px);
 }
+
+.descriptionText {
+  margin-top: rem(16px);
+
+  font-family: Inter;
+  font-size: rem(16px);
+  font-style: normal;
+  font-weight: 400;
+  line-height: 140%;
+}
