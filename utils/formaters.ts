@@ -1,4 +1,4 @@
-export const buildSuffix = (num: number | undefined) => {
+export const buildSuffix = (num: number | undefined) : string => {
   if (typeof num === 'undefined') {
     return '😣'
   }
@@ -12,7 +12,7 @@ export const buildSuffix = (num: number | undefined) => {
   const suffix = suffixes[i]
   return roundedNum + suffix
 }
-export const buildTime = (minutes: number | undefined) => {
+export const buildTime = (minutes: number | undefined) : string => {
   if (typeof minutes !== 'number' || minutes < 0) {
     return '😣'
   }

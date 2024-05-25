@@ -3,7 +3,7 @@ import { IconStar } from '@/ui'
 
 export const MoviesSkeleton = ({ count }: { count: number }) => {
   return (
-    <SimpleGrid cols={2} spacing={16} verticalSpacing={16} w="100%">
+    <SimpleGrid cols={{ base: 1, xl: 2 }} spacing={16} verticalSpacing={16} w="100%">
       {Array(count)
         .fill(0)
         .map((_, i) => (
