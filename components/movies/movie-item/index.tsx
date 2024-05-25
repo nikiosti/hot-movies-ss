@@ -5,7 +5,6 @@ import { MovieDetails, MovieResult } from '@/types/Movies'
 import { IconStar } from '@/ui'
 import { buildSuffix } from '@/utils/formaters'
 import { Group, Image, Paper, Stack, Text, UnstyledButton } from '@mantine/core'
-import { useMediaQuery } from '@mantine/hooks'
 import { useRouter } from 'next/navigation'
 import React from 'react'
 

@@ -1,11 +1,11 @@
-import { useRouter } from 'next/navigation'
+'use client'
+import { notFound } from 'next/navigation'
 import { useEffect } from 'react'
 
 export const useErrorRedirect = (isError: boolean) => {
-  const router = useRouter()
   useEffect(() => {
     if (isError) {
-      router.push('/not-found')
+      notFound()
     }
   }, [isError])
 }

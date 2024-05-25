@@ -1,4 +1,4 @@
-import { Group, Paper, SimpleGrid, Skeleton, Stack } from '@mantine/core'
+import { Group,  SimpleGrid, Skeleton } from '@mantine/core'
 import { IconStar } from '@/ui'
 
 export const MoviesSkeleton = ({ count }: { count: number }) => {
