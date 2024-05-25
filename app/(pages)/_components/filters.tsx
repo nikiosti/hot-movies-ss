@@ -4,7 +4,7 @@ import { SORT_BY_DATA } from '@/constants/filter-constants'
 import { FilterForm } from '@/types/Form'
 import { Box, Group, NumberInput, Text, UnstyledButton } from '@mantine/core'
 import { UseFormReturnType } from '@mantine/form'
-import { SelectGenres } from '@/components/genre-select'
+import { MultiSelect } from '@/components/multi-select'
 
 import classes from './index.module.css'
 import { Select } from '@/components/select'
@@ -18,7 +18,11 @@ export const Filters = ({ form, genres }: FiltersProps) => {
   return (
     <Box pos="relative" mb={120} mt={40}>
       <Group gap={16} align="flex-end" grow preventGrowOverflow={false}>
-        <SelectGenres form={form} genreOptions={genres} />
+        <MultiSelect
+          values={form.values.genres}
+          setValues={form.getInputProps('genres').onChange}
+          valuesData={genres}
+        />
 
         <Select
           setValue={form.getInputProps('releaseYear').onChange}

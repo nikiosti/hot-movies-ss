@@ -1,15 +1,17 @@
 'use client'
-import { Combobox, Group, Input, InputBase, PillsInput, ScrollArea, Text, useCombobox } from '@mantine/core'
-import { UseFormReturnType } from '@mantine/form'
-import { FilterForm } from '@/types/Form'
+import { Combobox, Group, Input, InputBase, ScrollArea, Text, useCombobox } from '@mantine/core'
+
 import { IconDropDownChevron } from '@/ui'
 import classes from './index.module.css'
-export const SelectGenres = ({
-  form,
-  genreOptions,
+import { Dispatch, SetStateAction } from 'react'
+export const MultiSelect = ({
+  setValues,
+  valuesData,
+  values,
 }: {
-  form: UseFormReturnType<FilterForm>
-  genreOptions: { value: string; label: string }[] | undefined
+  setValues: Dispatch<SetStateAction<string[] | null>>
+  valuesData: { value: string; label: string }[] | undefined
+  values: string[]
 }) => {
   const combobox = useCombobox({
     onDropdownClose: () => combobox.resetSelectedOption(),
@@ -17,29 +19,27 @@ export const SelectGenres = ({
   })
 
   const handleValueSelect = (val: string) => {
-    const newGenres = form.values.genres.includes(val)
-      ? form.values.genres.filter((v) => v !== val)
-      : [...form.values.genres, val]
+    const newGenres = values.includes(val) ? values.filter((v) => v !== val) : [...values, val]
 
-    form.setFieldValue('genres', newGenres)
+    setValues(newGenres)
   }
 
-  const genreLabels = form.values.genres.map((item) => {
-    const genre = genreOptions?.find((genre) => genre.value === item)
-    return genre?.label
+  const getLabelArray = values.map((item) => {
+    const itemData = valuesData?.find((i) => i.value === item)
+    return itemData?.label
   })
-  const values = <Text className={classes.valueText}>{genreLabels.join(', ')}</Text>
+  const textValues = <Text className={classes.valueText}>{getLabelArray.join(', ')}</Text>
 
-  const options = genreOptions?.map((item, index) => {
+  const options = valuesData?.map((item, index) => {
     return (
       <Combobox.Option
         className={classes.option}
         value={item.value}
         key={index}
-        active={form.values.genres.includes(item.value)}
-        data-active={form.values.genres.includes(item.value)}
+        active={values.includes(item.value)}
+        data-active={values.includes(item.value)}
       >
-        <Text data-active={form.values.genres.includes(item.value)} className={classes.optionText}>
+        <Text data-active={values.includes(item.value)} className={classes.optionText}>
           {item.label}
         </Text>
       </Combobox.Option>
@@ -63,7 +63,7 @@ export const SelectGenres = ({
           label="Genres"
           onClick={() => combobox.toggleDropdown()}
         >
-          <Group>{form.values.genres.length > 0 ? values : <Input.Placeholder>Select genre</Input.Placeholder>}</Group>
+          <Group>{values.length > 0 ? textValues : <Input.Placeholder>Select genre</Input.Placeholder>}</Group>
         </InputBase>
       </Combobox.DropdownTarget>
 
