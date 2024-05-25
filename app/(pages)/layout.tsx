@@ -16,7 +16,7 @@ const Layouyt = ({ children }: { children: React.ReactNode }) => {
         collapsed: { mobile: !opened },
       }}
     >
-      <AppShell.Navbar bg="purple.1" withBorder={false} p={24} zIndex={200}>
+      <AppShell.Navbar bg="purple.1" withBorder={false} p={24} zIndex={101}>
         <Navbar />
       </AppShell.Navbar>
       <AppShell.Main bg="grey.1">

@@ -24,7 +24,7 @@ export const MovieItem: React.FC<MovieProps> = ({ movie, children, genres }) => 
       <Group align="flex-start" gap={8} wrap="nowrap" justify="space-between">
         <Group gap={16} wrap="nowrap" align="flex-start">
           <Image className={classes.image} src={TMDB_IMAGE_URL + movie?.poster_path} fallbackSrc="/poster-fallback.svg" />
-          <Stack h={170} justify="space-between">
+          <Stack h={'100%'} justify="space-between">
             <div>
               <UnstyledButton onClick={() => router.push('/movie/' + movie?.id)}>
                 <Text lineClamp={2} className={classes.textButton}>
