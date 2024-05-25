@@ -21,16 +21,11 @@ const Page = () => {
 
   const { data: movies, isPending, isSuccess } = useParallelMovie(favoritesLC)
 
-  const { data: genres } = useGetGenres('genres', CLIENT_GENRE_URL)
-
-  const genreOptions = genres?.genres.map((genre) => ({
-    value: genre.id.toString(),
-    label: genre.name,
-  }))
+  const { data: genres } = useGetGenres('genres')
 
   const getGenres = (movie: MovieDetails): string => {
     return movie?.genres
-      .map((genreId) => genreOptions?.find((option) => option.value === genreId.id.toString())?.label)
+      .map((genreId) => genres?.find((option) => option.value === genreId.id.toString())?.label)
       .filter((label) => label !== undefined)
       .join(', ')
   }
