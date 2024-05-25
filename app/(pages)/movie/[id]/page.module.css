@@ -1,20 +1,48 @@
 .paper {
+  height: 100%;
+
   padding: rem(24px);
   border-radius: rem(12px);
   margin-top: rem(20px);
   height: rem(400px);
+  @media (max-width: $mantine-breakpoint-lg) {
+    height: 100%;
+  }
 }
 
-.group {
+.poster {
+  max-width: rem(250px);
+  width: 100%;
+  align-self: stretch;
+}
+
+.groupBlock {
+  height: 100%;
+
   align-items: flex-start;
   gap: rem(8px);
   flex-wrap: nowrap;
   justify-content: space-between;
+
+  @media (max-width: em(400px)) {
+    flex-wrap: wrap-reverse;
+  }
+}
+
+.group {
+  height: 100%;
+  align-items: flex-start;
+  gap: rem(8px);
+  flex-wrap: nowrap;
+  justify-content: space-between;
+  @media (max-width: $mantine-breakpoint-lg) {
+    flex-wrap: wrap;
+  }
 }
 
 .stack {
   justify-content: space-between;
-  height: rem(352px);
+  height: 100%;
 }
 
 .text {

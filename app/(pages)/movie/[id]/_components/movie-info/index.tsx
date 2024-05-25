@@ -10,7 +10,7 @@ const MovieInfo = ({ movie }: { movie: MovieDetails | undefined }) => {
   const { data: genres } = useGetGenres('genres')
 
   return (
-    <Box h={148}>
+    <Box>
       {[
         { label: 'Duration', value: buildTime(movie?.runtime) },
         { label: 'Premiere', value: buildDate(movie?.release_date as string) },
@@ -24,7 +24,7 @@ const MovieInfo = ({ movie }: { movie: MovieDetails | undefined }) => {
             .join(', '),
         },
       ].map((item, index) => (
-        <Group h={19} key={index} mb={12}>
+        <Group h={19} key={index} mt={12} wrap="nowrap">
           <Text w={140} className={classes.label}>
             {item.label}
           </Text>

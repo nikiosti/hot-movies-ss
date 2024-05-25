@@ -1,6 +1,10 @@
 .video {
-  width: rem(500px);
+  max-width: rem(500px);
   height: rem(281px);
+
+  width: 100%;
+  /* height: 100%; */
+
   border-radius: rem(9px);
   margin-top: rem(16px);
 }

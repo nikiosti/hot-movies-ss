@@ -8,7 +8,7 @@ import { useGetGenres } from '@/hooks/use-genres'
 import { useGetMovie } from '@/hooks/use-movies'
 
 import { Box, Center, Group, Image, Loader, NumberFormatter, Paper, Stack, Text } from '@mantine/core'
-import { useDisclosure, useLocalStorage } from '@mantine/hooks'
+import { useDisclosure, useLocalStorage, useMediaQuery } from '@mantine/hooks'
 
 import { useState } from 'react'
 
@@ -65,6 +65,8 @@ const Page = ({ params }: { params: { id: string } }) => {
     openModalRating()
   }
 
+  const md = useMediaQuery('(min-width: 62em)')
+
   if (isPending) {
     return (
       <Center h="100vh">
@@ -73,13 +75,17 @@ const Page = ({ params }: { params: { id: string } }) => {
     )
   }
   return (
-    <Box mx={180} pt={40}>
+    <Box mx={md ? 180 : 5} pt={40}>
       <Breadcrumbs originalTitle={movie?.original_title} />
 
       <Paper className={classes.paper}>
-        <Group className={classes.group}>
+        <Group className={classes.groupBlock}>
           <Group gap={16} className={classes.group}>
-            <Image w={250} h={352} src={TMDB_IMAGE_URL + movie?.poster_path} fallbackSrc="/poster-fallback.svg" />
+            <Image
+              className={classes.poster}
+              src={TMDB_IMAGE_URL + movie?.poster_path}
+              fallbackSrc="/poster-fallback.svg"
+            />
             <Stack className={classes.stack}>
               <div>
                 <Text className={classes.text}>{movie?.original_title}</Text>
@@ -101,7 +107,7 @@ const Page = ({ params }: { params: { id: string } }) => {
                   </Text>
                 </Group>
               </div>
-             <MovieInfo movie={movie} />
+              <MovieInfo movie={movie} />
             </Stack>
           </Group>
           <Rating
