@@ -6,7 +6,7 @@ import { SimpleGrid } from '@mantine/core'
 import { useDisclosure, useLocalStorage } from '@mantine/hooks'
 import { useState } from 'react'
 import { MovieItem } from '../movie-item'
-import { ModalRating } from '@/components/modal'
+import { ModalRating } from '@/components/modal-rating'
 
 export type Movie = MovieResult | MovieDetails | undefined
 
