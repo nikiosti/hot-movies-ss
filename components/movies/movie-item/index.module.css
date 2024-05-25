@@ -1,3 +1,24 @@
+.card {
+  height: rem(218px);
+  padding: rem(24px);
+  border-radius: rem(12px);
+}
+
+.image {
+  width: rem(119px);
+  height: rem(170px);
+
+  @media (max-width: em(400px)) {
+    width: rem(50px);
+    height: rem(50px);
+
+    min-width: rem(50px);
+    min-height: rem(50px);
+
+    border-radius: 100%;
+  }
+}
+
 .textButton {
   color: var(--mantine-color-purple-4);
   font-weight: 600;
@@ -8,4 +29,18 @@
   @mixin hover {
     color: var(--mantine-color-purple-3);
   }
+}
+
+.voteAverageText {
+  font-weight: 600;
+  line-height: rem(20px);
+  font-size: rem(16px);
+  font-style: normal;
+}
+
+.voteCountText {
+  font-weight: 400;
+  font-size: rem(16px);
+  line-height: normal;
+  color: var(--mantine-color-grey-6);
 }

@@ -60,7 +60,7 @@ const Page = () => {
   }
 
   return (
-    <Box mx={md ? 90 : 5} pt={41.5} h="calc(100vh - 48px)">
+    <Box mx={md ? 90 : 5} pt={41.5} pos="relative" h="100vh">
       <Group justify="space-between">
         <Title order={1} fz={32} fw={700} lh="140%" fs="normal">
           Rated movies
