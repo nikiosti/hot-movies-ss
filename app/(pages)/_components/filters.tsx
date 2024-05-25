@@ -30,6 +30,7 @@ export const Filters = ({ form, genreOptions }: FiltersProps) => {
 
         <Group wrap="nowrap" w={283} align="flex-end" gap={8}>
           <NumberInput
+            clampBehavior="strict"
             {...form.getInputProps('voteAverageGte')}
             classNames={{
               input: classes.input,
@@ -45,6 +46,7 @@ export const Filters = ({ form, genreOptions }: FiltersProps) => {
           />
 
           <NumberInput
+            clampBehavior="strict"
             classNames={{
               input: classes.input,
               controls: classes.controls,

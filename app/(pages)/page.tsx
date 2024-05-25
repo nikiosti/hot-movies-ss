@@ -20,7 +20,7 @@ import { MoviesSkeleton } from '@/components/movies/movies-skeleton'
 import { MovieNotFound } from '@/components/movies/movie-not-found'
 
 import classes from './page.module.css'
-import { useMediaQuery } from '@mantine/hooks'
+import { useDebouncedValue, useMediaQuery } from '@mantine/hooks'
 
 const Page = () => {
   const form = useForm<FilterForm>({
@@ -33,6 +33,8 @@ const Page = () => {
     },
   })
 
+  const [debounced] = useDebouncedValue(form.values, 200)
+
   const [activePage, setActivePage] = useState<number>(1)
 
   const url = buildUrlWithParameters(CLIENT_MOVIES_URL, {
@@ -41,8 +43,8 @@ const Page = () => {
     sort_by: form.values.sortBy,
     with_genres: form.values.genres,
     primary_release_year: form.values.releaseYear,
-    'vote_average.gte': form.values.voteAverageGte,
-    'vote_average.lte': form.values.voteAverageLte,
+    'vote_average.gte': debounced.voteAverageGte,
+    'vote_average.lte': debounced.voteAverageLte,
   })
 
   const { data: moviesData, isLoading } = useGetMovies(url)
