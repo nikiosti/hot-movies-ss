@@ -1,11 +1,11 @@
 .container {
-  margin-left: 90px;
-  margin-top: 41.5px;
+  margin-left: rem(90px);
+  margin-top: rem(41.5px);
   position: relative;
 }
 
 .title {
-  font-size: 32px;
+  font-size: rem(32px);
   font-weight: 700;
   font-style: normal;
   line-height: 140%;

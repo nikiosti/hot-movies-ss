@@ -4,11 +4,11 @@ import { SORT_BY_DATA } from '@/constants/filter-constants'
 import { FilterForm } from '@/types/Form'
 import { Box, Group, NumberInput, Text, UnstyledButton } from '@mantine/core'
 import { UseFormReturnType } from '@mantine/form'
+
+import { Select } from '@/components/select'
 import { MultiSelect } from '@/components/multi-select'
 
 import classes from './index.module.css'
-import { Select } from '@/components/select'
-
 interface FiltersProps {
   form: UseFormReturnType<FilterForm>
   genres: { value: string; label: string }[] | undefined

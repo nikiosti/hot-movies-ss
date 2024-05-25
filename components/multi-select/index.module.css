@@ -15,6 +15,16 @@
 
   &[data-active='true'] {
     background-color: var(--mantine-color-purple-5);
+
+    @mixin hover {
+      background-color: var(--mantine-color-purple-5);
+    }
+  }
+  @mixin hover {
+    background-color: var(--mantine-color-purple-4);
+    p {
+      color: var(--mantine-color-white);
+    }
   }
 }
 
@@ -37,12 +47,12 @@
 .input {
   height: rem(42px);
 
-  border: 1px solid var(--mantine-color-grey-3);
-  border-radius: 8px;
+  border: rem(1px) solid var(--mantine-color-grey-3);
+  border-radius: rem(8px);
 }
 
 .label {
-  font-size: 16px;
+  font-size: rem(16px);
   font-style: normal;
   font-weight: 700;
   line-height: 140%;
@@ -50,5 +60,5 @@
 
 .dropdown {
   border: none;
-  border-radius: 8px;
+  border-radius: rem(8px);
 }
