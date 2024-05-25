@@ -11,14 +11,14 @@ import { Select } from '@/components/select'
 
 interface FiltersProps {
   form: UseFormReturnType<FilterForm>
-  genreOptions: { value: string; label: string }[] | undefined
+  genres: { value: string; label: string }[] | undefined
 }
 
-export const Filters = ({ form, genreOptions }: FiltersProps) => {
+export const Filters = ({ form, genres }: FiltersProps) => {
   return (
     <Box pos="relative" mb={120} mt={40}>
       <Group gap={16} align="flex-end" grow preventGrowOverflow={false}>
-        <SelectGenres form={form} genreOptions={genreOptions} />
+        <SelectGenres form={form} genreOptions={genres} />
 
         <Select
           setValue={form.getInputProps('releaseYear').onChange}

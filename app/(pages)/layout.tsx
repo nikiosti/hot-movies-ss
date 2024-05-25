@@ -1,10 +1,7 @@
 'use client'
-import { AppShell, Box, Group, NavLink } from '@mantine/core'
+import { AppShell } from '@mantine/core'
 import { useDisclosure } from '@mantine/hooks'
 
-import { LogotypeWithTitle } from '@/ui/logotype/logotype'
-
-import { usePathname, useRouter } from 'next/navigation'
 import { Navbar } from '@/ui'
 
 const Layouyt = ({ children }: { children: React.ReactNode }) => {

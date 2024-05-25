@@ -1,9 +1,8 @@
 'use client'
-import { CLIENT_GENRE_URL, CLIENT_MOVIES_URL } from '@/constants/api-constants'
+import {  CLIENT_MOVIES_URL } from '@/constants/api-constants'
 import { Filters } from './_components/filters'
 import { MoviesList } from '@/components/movies'
 import { MovieResult } from '@/types/Movies'
-import { UseQueryResult } from '@tanstack/react-query'
 import { useGetMovies } from '@/hooks/use-movies'
 import { buildUrlWithParameters } from '@/lib/api'
 import { useForm } from '@mantine/form'
@@ -12,7 +11,7 @@ import { SORT_BY_DATA } from '@/constants/filter-constants'
 import { FilterForm } from '@/types/Form'
 import { useEffect, useState } from 'react'
 import { useGetGenres } from '@/hooks/use-genres'
-import { Genre } from '@/types/Genre'
+
 
 import { Pagination } from '@/components/pagination'
 import { Box, Title } from '@mantine/core'
@@ -65,7 +64,7 @@ const Page = () => {
       <Title order={3} className={classes.title}>
         Movies
       </Title>
-      <Filters form={form} genreOptions={genres} key="filter" />
+      <Filters form={form} genres={genres} />
       {isLoading ? (
         <MoviesSkeleton key="skeleton" count={20} />
       ) : (
