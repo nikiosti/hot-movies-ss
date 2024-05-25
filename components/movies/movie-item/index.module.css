@@ -1,0 +1,11 @@
+.textButton {
+  color: var(--mantine-color-purple-4);
+  font-weight: 600;
+  font-size: rem(20px);
+  line-height: normal;
+  font-style: normal;
+
+  @mixin hover {
+    color: var(--mantine-color-purple-3);
+  }
+}

@@ -5,8 +5,11 @@ import { MovieDetails, MovieResult } from '@/types/Movies'
 import { IconStar } from '@/ui'
 import { buildSuffix } from '@/utils/formaters'
 import { Group, Image, Paper, Stack, Text, UnstyledButton } from '@mantine/core'
+import { useMediaQuery } from '@mantine/hooks'
 import { useRouter } from 'next/navigation'
 import React from 'react'
+
+import classes from './index.module.css'
 
 interface MovieProps {
   movie: MovieResult | MovieDetails | undefined
@@ -23,20 +26,12 @@ export const MovieItem: React.FC<MovieProps> = ({ movie, children, genres }) => 
           <Image w={119} h={170} src={TMDB_IMAGE_URL + movie?.poster_path} fallbackSrc="/poster-fallback.svg" />
           <Stack h={170} justify="space-between">
             <div>
-              <UnstyledButton>
-                <Text
-                  lineClamp={2}
-                  c="purple.4"
-                  fw={600}
-                  fz={20}
-                  lh="normal"
-                  fs="normal"
-                  onClick={() => router.push('/movie/' + movie?.id)}
-                >
+              <UnstyledButton onClick={() => router.push('/movie/' + movie?.id)}>
+                <Text lineClamp={2} className={classes.textButton}>
                   {movie?.original_title}
                 </Text>
               </UnstyledButton>
-              <Text c="grey.6" fz={16} fw={400} lh="20px" mt={8}>
+              <Text lineClamp={1} c="grey.6" fz={16} fw={400} lh="20px" mt={8}>
                 {new Date(movie?.release_date as string).getFullYear()}
               </Text>
               <Group gap={8} mt={8}>
@@ -44,11 +39,11 @@ export const MovieItem: React.FC<MovieProps> = ({ movie, children, genres }) => 
                   <IconStar
                     style={{ stroke: 'var(--mantine-color-yellow-4)', fill: 'var(--mantine-color-yellow-4)' }}
                   />
-                  <Text fw={600} lh="20px" fz={16} fs="normal">
+                  <Text lineClamp={1} fw={600} lh="20px" fz={16} fs="normal">
                     {movie?.vote_average?.toFixed(1)}
                   </Text>
                 </Group>
-                <Text fw={400} fz={16} lh="normal" c="grey.6">
+                <Text lineClamp={1} fw={400} fz={16} lh="normal" c="grey.6">
                   ({buildSuffix(movie?.vote_count as number)})
                 </Text>
               </Group>

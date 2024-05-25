@@ -10,8 +10,8 @@
 }
 
 .option {
-  border-radius: 8px;
-  padding: 8px;
+  border-radius: rem(8px);
+  padding: rem(8px);
 
   &[data-active='true'] {
     background-color: var(--mantine-color-purple-5);
@@ -47,7 +47,7 @@
 .input {
   height: rem(42px);
 
-  border: 1px solid var(--mantine-color-grey-3);
+  border: rem(1px) solid var(--mantine-color-grey-3);
   border-radius: rem(8px);
 }
 

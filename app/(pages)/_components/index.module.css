@@ -7,6 +7,7 @@
 .input:focus,
 .input:focus-within {
   caret-color: var(--mantine-color-purple-5);
+  
 }
 .control {
   border: none;
