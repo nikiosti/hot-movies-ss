@@ -4,7 +4,6 @@ import { useParallelMovie } from '@/hooks/use-movies'
 import { MovieDetails } from '@/types/Movies'
 import { useLocalStorage, useMediaQuery } from '@mantine/hooks'
 import { useGetGenres } from '@/hooks/use-genres'
-import { CLIENT_GENRE_URL } from '@/constants/api-constants'
 import { useEffect, useState } from 'react'
 import { Pagination } from '@/components/pagination'
 import { Box, Button, Center, Group, Loader, TextInput, Title } from '@mantine/core'
@@ -12,6 +11,7 @@ import { MoviesList } from '@/components/movies'
 import { IconSearch } from '@/ui'
 import { RatedMovieNotFound } from './_components/rated-movie-not-found'
 import { MovieNotFound } from '@/components/movies/movie-not-found'
+import SearchBar from './_components/search-bar'
 
 const Page = () => {
   const [favoritesLC, setFavoritesLC] = useLocalStorage<{ id: number; rating: number }[]>({
@@ -53,47 +53,21 @@ const Page = () => {
     return <Center h="100vh">{favoritesLC.length === 0 ? <RatedMovieNotFound /> : <Loader />}</Center>
   }
 
+  const handleSearchClick = () => {
+    if (activePage !== 1) {
+      setPage(1)
+    }
+    setSearchTerm(searchValue)
+  }
+
   return (
     <Box mx={md ? 90 : 5} pt={41.5} h="calc(100vh - 48px)">
       <Group justify="space-between">
         <Title order={1} fz={32} fw={700} lh="140%" fs="normal">
           Rated movies
         </Title>
-        <TextInput
-          radius={8}
-          styles={{
-            root: {},
-            input: {
-              height: 48,
-              border: '1px solid var(--mantine-color-grey-3)',
-            },
-          }}
-          maw={658}
-          w="100%"
-          leftSection={<IconSearch />}
-          rightSectionWidth={100}
-          rightSection={
-            <Button
-              color="purple.5"
-              w={88}
-              h={32}
-              radius={8}
-              onClick={() => {
-                if (activePage !== 1) {
-                  setPage(1)
-                }
-                setSearchTerm(searchValue)
-              }}
-            >
-              Search
-            </Button>
-          }
-          placeholder="Search movie title"
-          value={searchValue}
-          onChange={(event) => {
-            setSearchValue(event.target.value)
-          }}
-        />
+
+        <SearchBar onSearch={handleSearchClick} searchValue={searchValue} setSearchValue={setSearchValue} />
       </Group>
       {filteredMovies.length === 0 && isSuccess && <MovieNotFound />}
 
