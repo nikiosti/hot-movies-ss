@@ -1,23 +1,20 @@
 .card {
-  height: rem(218px);
   padding: rem(24px);
   border-radius: rem(12px);
 }
 
-.image {
-  max-width: rem(119px);
-  max-height: rem(170px);
+.group {
+  align-items: flex-start;
+  gap: rem(8px);
+  flex-wrap: nowrap;
+  justify-content: space-between;
 
-  /* @media (max-width: em(400px)) {
-    width: rem(50px);
-    height: rem(50px);
-
-    min-width: rem(50px);
-    min-height: rem(50px);
-
-    border-radius: 100%;
-  } */
+  @media (max-width: em(400px)) {
+    flex-wrap: wrap-reverse;
+  }
 }
+
+
 
 .textButton {
   color: var(--mantine-color-purple-4);

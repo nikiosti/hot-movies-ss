@@ -21,9 +21,9 @@ export const MovieItem: React.FC<MovieProps> = ({ movie, children, genres }) => 
   const router = useRouter()
   return (
     <Paper className={classes.card}>
-      <Group align="flex-start" gap={8} wrap="nowrap" justify="space-between">
+      <Group className={classes.group}>
         <Group gap={16} wrap="nowrap" align="flex-start">
-          <Image className={classes.image} src={TMDB_IMAGE_URL + movie?.poster_path} fallbackSrc="/poster-fallback.svg" />
+          <Image w={119} h={170} src={TMDB_IMAGE_URL + movie?.poster_path} fallbackSrc="/poster-fallback.svg" />
           <Stack h={'100%'} justify="space-between">
             <div>
               <UnstyledButton onClick={() => router.push('/movie/' + movie?.id)}>
