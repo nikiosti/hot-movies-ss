@@ -13,7 +13,7 @@ import { useEffect, useState } from 'react'
 import { useGetGenres } from '@/hooks/use-genres'
 
 import { Pagination } from '@/components/pagination'
-import { Box, Grid, GridCol, Title } from '@mantine/core'
+import { Box, Title } from '@mantine/core'
 import { MoviesSkeleton } from '@/components/movies/movies-skeleton'
 import { MovieNotFound } from '@/components/movies/movie-not-found'
 

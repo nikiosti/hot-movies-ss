@@ -7,7 +7,6 @@
 .input:focus,
 .input:focus-within {
   caret-color: var(--mantine-color-purple-5);
-  
 }
 .control {
   border: none;
@@ -19,4 +18,19 @@
   font-weight: 700;
   font-style: normal;
   line-height: 140%;
+}
+
+.textReset {
+  color: var(--matine-color-grey-6);
+  &[data-active='true'] {
+    color: var(--mantine-color-purple-5);
+
+    @mixin hover {
+      color: var(--mantine-color-purple-4);
+    }
+
+    &:active {
+      color: var(--mantine-color-purple-5);
+    }
+  }
 }

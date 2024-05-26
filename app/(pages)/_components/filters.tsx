@@ -65,7 +65,9 @@ export const Filters = ({ form, genres }: FiltersProps) => {
         </Group>
 
         <UnstyledButton onClick={() => form.reset()}>
-          <Text>Reset&nbsp;filters</Text>
+          <Text data-active={form.isDirty()} className={classes.textReset}>
+            Reset&nbsp;filters
+          </Text>
         </UnstyledButton>
       </Group>
 
