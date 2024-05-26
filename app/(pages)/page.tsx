@@ -65,9 +65,13 @@ const Page = () => {
       </Title>
 
       <Filters form={form} genres={genres} />
-      <Box pos="relative" h={250}>
-        {moviesData?.results.length === 0 && <MovieNotFound />}
-      </Box>
+
+      {moviesData?.results.length === 0 && (
+        <Box pos="relative" h={250}>
+          <MovieNotFound />
+        </Box>
+      )}
+
       {isLoading ? (
         <MoviesSkeleton key="skeleton" count={20} />
       ) : (
