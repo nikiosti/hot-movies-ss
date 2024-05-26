@@ -63,8 +63,11 @@ const Page = () => {
       <Title order={3} className={classes.title}>
         Movies
       </Title>
+
       <Filters form={form} genres={genres} />
-      <Box pos="relative">{moviesData?.results.length === 0 && <MovieNotFound />}</Box>
+      <Box pos="relative" h={250}>
+        {moviesData?.results.length === 0 && <MovieNotFound />}
+      </Box>
       {isLoading ? (
         <MoviesSkeleton key="skeleton" count={20} />
       ) : (
@@ -85,7 +88,6 @@ const Page = () => {
       )}
 
       <Box h={82} />
-
     </Box>
   )
 }

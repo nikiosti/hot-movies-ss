@@ -16,7 +16,7 @@ interface FiltersProps {
 
 export const Filters = ({ form, genres }: FiltersProps) => {
   return (
-    <Box pos="relative" mb={120} mt={40}>
+    <Box mt={40}>
       <Group gap={16} align="flex-end" grow preventGrowOverflow={false}>
         <MultiSelect
           values={form.values.genres}
@@ -69,7 +69,7 @@ export const Filters = ({ form, genres }: FiltersProps) => {
         </UnstyledButton>
       </Group>
 
-      <Box pos="absolute" my={24} right={0}>
+      <Group justify="right" my={24}>
         <Select
           data={SORT_BY_DATA}
           setValue={form.getInputProps('sortBy').onChange}
@@ -77,7 +77,7 @@ export const Filters = ({ form, genres }: FiltersProps) => {
           label="Sort by"
           placeholder="sort by"
         />
-      </Box>
+      </Group>
     </Box>
   )
 }
