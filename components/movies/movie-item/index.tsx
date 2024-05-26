@@ -21,7 +21,7 @@ export const MovieItem: React.FC<MovieProps> = ({ movie, children, genres }) => 
   return (
     <Paper className={classes.card}>
       <Group className={classes.group}>
-        <Group gap={16} wrap="nowrap" align="flex-start">
+        <Group h="100%" gap={16} wrap="nowrap" align="flex-start">
           <Image w={119} h={170} src={TMDB_IMAGE_URL + movie?.poster_path} fallbackSrc="/poster-fallback.svg" />
           <Stack h={'100%'} justify="space-between">
             <div>
@@ -47,11 +47,12 @@ export const MovieItem: React.FC<MovieProps> = ({ movie, children, genres }) => 
                 </Text>
               </Group>
             </div>
-            <div>
+            <Group wrap="nowrap" gap={8}>
+              <Text className={classes.voteCountText}>Genres</Text>
               <Text lineClamp={1} w="100%">
                 {genres}
               </Text>
-            </div>
+            </Group>
           </Stack>
         </Group>
         {children}

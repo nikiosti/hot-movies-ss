@@ -1,9 +1,15 @@
 .card {
   padding: rem(24px);
   border-radius: rem(12px);
+  height: 100%;
+  @media (max-width: em(400px)) {
+    padding: rem(14px);
+    height: fit-content;
+  }
 }
 
 .group {
+  height: 100%;
   align-items: flex-start;
   gap: rem(8px);
   flex-wrap: nowrap;
@@ -13,8 +19,6 @@
     flex-wrap: wrap-reverse;
   }
 }
-
-
 
 .textButton {
   color: var(--mantine-color-purple-4);

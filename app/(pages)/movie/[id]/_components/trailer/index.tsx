@@ -1,6 +1,6 @@
 'use client'
 import { MovieDetails } from '@/types/Movies'
-import { Avatar, Divider, Group, Image, Paper, Text, Title } from '@mantine/core'
+import { Avatar, Divider, Group,  Paper, Text, Title } from '@mantine/core'
 
 import classes from './index.module.css'
 import { IconClapperboard } from '@/ui'

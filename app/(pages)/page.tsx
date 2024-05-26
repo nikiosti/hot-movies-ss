@@ -1,5 +1,5 @@
 'use client'
-import {  CLIENT_MOVIES_URL } from '@/constants/api-constants'
+import { CLIENT_MOVIES_URL } from '@/constants/api-constants'
 import { Filters } from './_components/filters'
 import { MoviesList } from '@/components/movies'
 import { MovieResult } from '@/types/Movies'
@@ -12,9 +12,8 @@ import { FilterForm } from '@/types/Form'
 import { useEffect, useState } from 'react'
 import { useGetGenres } from '@/hooks/use-genres'
 
-
 import { Pagination } from '@/components/pagination'
-import { Box, Title } from '@mantine/core'
+import { Box, Grid, GridCol, Title } from '@mantine/core'
 import { MoviesSkeleton } from '@/components/movies/movies-skeleton'
 import { MovieNotFound } from '@/components/movies/movie-not-found'
 
@@ -60,30 +59,33 @@ const Page = () => {
 
   const md = useMediaQuery('(min-width: 62em)')
   return (
-    <Box mx={md ? 90 : 5} pt={41.5} pos="relative">
+    <Box mx={md ? 90 : 5} pt={41.5}>
       <Title order={3} className={classes.title}>
         Movies
       </Title>
       <Filters form={form} genres={genres} />
+      <Box pos="relative">{moviesData?.results.length === 0 && <MovieNotFound />}</Box>
       {isLoading ? (
         <MoviesSkeleton key="skeleton" count={20} />
       ) : (
         <MoviesList moviesData={moviesData?.results as MovieResult[]} getGenres={getGenres} key="moviesList" />
       )}
 
-      {moviesData?.results.length === 0 && <MovieNotFound />}
-
       <Box h={24} />
-      <Box pos="absolute" right={0}>
-        <Pagination
-          key="pagination"
-          total={(moviesData?.total_pages as number) >= 500 ? 500 : (moviesData?.total_pages as number)}
-          activePage={activePage}
-          setActivePage={setActivePage}
-        />
-      </Box>
+
+      {moviesData?.results.length !== 0 && (
+        <Box pos="absolute" right={0}>
+          <Pagination
+            key="pagination"
+            total={(moviesData?.total_pages as number) >= 500 ? 500 : (moviesData?.total_pages as number)}
+            activePage={activePage}
+            setActivePage={setActivePage}
+          />
+        </Box>
+      )}
 
       <Box h={82} />
+
     </Box>
   )
 }
