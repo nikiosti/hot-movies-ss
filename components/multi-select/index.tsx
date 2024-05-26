@@ -69,7 +69,7 @@ export const MultiSelect = ({
 
       <Combobox.Dropdown className={classes.dropdown}>
         <Combobox.Options>
-          <ScrollArea.Autosize mah={244} type="scroll">
+          <ScrollArea.Autosize mah={216} type="scroll">
             {options}
           </ScrollArea.Autosize>
         </Combobox.Options>

@@ -70,7 +70,7 @@ export function Select({
 
       <Combobox.Dropdown className={classes.dropdown}>
         <Combobox.Options>
-          <ScrollArea.Autosize mah={224} type="scroll">
+          <ScrollArea.Autosize mah={216} type="scroll">
             {options}
           </ScrollArea.Autosize>
         </Combobox.Options>

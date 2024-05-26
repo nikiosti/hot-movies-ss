@@ -11,7 +11,8 @@
 
 .option {
   border-radius: rem(8px);
-  padding: rem(8px);
+  padding: rem(8px) rem(12px);
+  height: rem(36px);
 
   &[data-active='true'] {
     background-color: var(--mantine-color-purple-5);
