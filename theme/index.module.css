@@ -8,3 +8,12 @@
     background-color: var(--mantine-color-purple-6);
   }
 }
+
+.scrollbar {
+  &[data-orientation='vertical'] .thumb {
+    background-color: var(--mantine-color-grey-5);
+    width: rem(4px);
+    height: rem(24px);
+    border-radius: rem(20px);
+  }
+}

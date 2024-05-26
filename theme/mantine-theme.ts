@@ -1,5 +1,5 @@
 'use client'
-import { Button, createTheme } from '@mantine/core'
+import { Button, createTheme, ScrollArea } from '@mantine/core'
 import classes from './index.module.css'
 export const theme = createTheme({
   primaryColor: 'purple',
@@ -7,6 +7,10 @@ export const theme = createTheme({
   black: '#232134',
 
   components: {
+    ScrollArea: ScrollArea.extend({
+      classNames: classes,
+    }),
+
     Button: Button.extend({
       defaultProps: {
         classNames: {
